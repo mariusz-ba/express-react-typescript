@@ -1,13 +1,11 @@
 // Module dependencies
-import express from 'express';
-import helmet from 'helmet';
-import path from 'path';
-
-import webpack from 'webpack';
-import webpackConfig from '../../webpack.config.dev';
-import webpackDevMiddleware from 'webpack-dev-middleware';
+import * as express from 'express';
+import * as helmet from 'helmet';
+import * as path from 'path';
+import wds from './wds';
 
 const app = express();
+wds(app);
 
 
 // Configuration
@@ -19,7 +17,6 @@ app.set('json spaces', 2);
 // Middleware
 app.use(helmet());
 app.use(express.static(path.join(__dirname, '../../dist')));
-app.use(webpackDevMiddleware(webpack(webpackConfig)));
 
 
 // Test route

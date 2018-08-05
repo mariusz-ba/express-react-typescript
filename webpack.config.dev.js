@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export default {
+module.exports = {
   entry: path.join(__dirname, 'src/client/index.tsx'),
   output: {
     filename: 'bundle.js',
@@ -10,11 +10,6 @@ export default {
   devtool: 'source-map',
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        include: path.join(__dirname, 'src/client'),
-        loaders: ['babel-loader']
-      },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
